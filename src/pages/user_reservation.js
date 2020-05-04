@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import Header from '../components/login';
-import Consult from '../components/reservation_data';
-import { connect } from 'react-redux';
-import * as actConsult from '../_actions/consult';
+import React, { Component } from "react";
+import Header from "../components/login";
+import Consult from "../components/reservation_data";
+import { connect } from "react-redux";
+import * as actConsult from "../_actions/consult";
 
 class user_reservation extends Component {
   componentDidMount() {
-    const data = JSON.parse(localStorage.getItem('credentials'));
+    const data = JSON.parse(localStorage.getItem("credentials"));
     this.props.dispatch(actConsult.getConsult(data.token));
   }
 
@@ -16,6 +16,9 @@ class user_reservation extends Component {
     const item = consul.map((item, index) => (
       <Consult item={item} key={index} />
     ));
+
+    if (loading) return <h1>Loading</h1>;
+    if (error) return <h1>ERROR</h1>;
 
     return (
       <>

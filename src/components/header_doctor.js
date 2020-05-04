@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Navbar, Dropdown, Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Navbar, Dropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default class header_doctor extends Component {
   state = {
@@ -14,7 +14,7 @@ export default class header_doctor extends Component {
 
   render() {
     if (this.state.logout) {
-      window.location.href = '/';
+      window.location.href = "/";
     }
 
     return (
@@ -23,8 +23,9 @@ export default class header_doctor extends Component {
           <div className='col-lg-2'>
             <Link to='/'>
               <img
-                style={{ height: '55px' }}
-                src={process.env.PUBLIC_URL + '/logos/home.svg'}
+                style={{ height: "55px" }}
+                alt='...'
+                src={process.env.PUBLIC_URL + "/logos/home.svg"}
               />
             </Link>
           </div>
@@ -66,7 +67,7 @@ export default class header_doctor extends Component {
                 <div
                   className='dropdown-item'
                   onClick={this.handleSignOut}
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
                   <img
                     src={process.env.PUBLIC_URL + `../logos/logout.png`}

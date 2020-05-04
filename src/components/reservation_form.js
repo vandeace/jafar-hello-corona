@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import 'react-datepicker/dist/react-datepicker.css';
-import DatePicker from 'react-datepicker';
-import { Redirect } from 'react-router-dom';
-import * as actConsult from '../_actions/consult';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
+import { Redirect } from "react-router-dom";
+import * as actConsult from "../_actions/consult";
 
 class Reservation extends Component {
   constructor(props) {
@@ -46,12 +46,12 @@ class Reservation extends Component {
   };
 
   handleSubmit = async () => {
-    const datas = JSON.parse(localStorage.getItem('credentials'));
+    const datas = JSON.parse(localStorage.getItem("credentials"));
     const data = this.state.data;
     await this.props.dispatch(actConsult.postConsult(datas.token, data));
     await this.props.dispatch(actConsult.getConsult(datas.token));
     this.setState({
-      data: '',
+      data: "",
       success: true,
     });
   };
@@ -80,7 +80,7 @@ class Reservation extends Component {
                         required
                         autoComplete='off'
                         onChange={this.handleChange}
-                        value={data.fullName || ''}
+                        value={data.fullName || ""}
                         name='fullName'
                         className='forms'
                         type='text'
@@ -101,7 +101,7 @@ class Reservation extends Component {
                             required
                             autoComplete='off'
                             onChange={this.handleChange}
-                            value={data.phone || ''}
+                            value={data.phone || ""}
                             name='phone'
                             className='forms'
                             type='phone'
@@ -137,7 +137,7 @@ class Reservation extends Component {
                             required
                             autoComplete='off'
                             onChange={this.handleChange}
-                            value={data.age || ''}
+                            value={data.age || ""}
                             name='age'
                             className='weight'
                             type='number'
@@ -157,7 +157,7 @@ class Reservation extends Component {
                             required
                             autoComplete='off'
                             onChange={this.handleChange}
-                            value={data.height || ''}
+                            value={data.height || ""}
                             name='height'
                             className='weight'
                             type='number'
@@ -177,7 +177,7 @@ class Reservation extends Component {
                             required
                             autoComplete='off'
                             onChange={this.handleChange}
-                            value={data.weight || ''}
+                            value={data.weight || ""}
                             name='weight'
                             className='weight'
                             type='number'
@@ -196,7 +196,7 @@ class Reservation extends Component {
                           </label>
                           <select
                             onChange={this.handleChange}
-                            defaultValue={'select'}
+                            defaultValue={"select"}
                             name='gender'
                             className='forms'
                             id='gender'
@@ -219,7 +219,7 @@ class Reservation extends Component {
                             required
                             autoComplete='off'
                             onChange={this.handleChange}
-                            value={data.subject || ''}
+                            value={data.subject || ""}
                             name='subject'
                             className='forms'
                             type='text'
@@ -254,7 +254,7 @@ class Reservation extends Component {
                             required
                             autoComplete='off'
                             onChange={this.handleChange}
-                            value={data.description || ''}
+                            value={data.description || ""}
                             name='description'
                             id='description'
                             className='textareas'
@@ -264,8 +264,8 @@ class Reservation extends Component {
 
                       <div
                         style={{
-                          display: 'flex',
-                          justifyContent: 'center',
+                          display: "flex",
+                          justifyContent: "center",
                           marginLeft: 450,
                         }}
                       >

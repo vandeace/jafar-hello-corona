@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import * as actArticle from '../_actions/article';
-import Show from './article_item';
-import { Container, Row } from 'react-bootstrap';
-import '../style/show.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actArticle from "../_actions/article";
+import "../style/show.css";
 
 class Article extends Component {
   componentDidMount() {
@@ -13,15 +11,10 @@ class Article extends Component {
 
   render() {
     const { data: article, loading, error } = this.props.article;
-    // const data = article.data.map((item, index) => (
-    // <Link
-    //   to={`/article/${item.id}`}
-    //   style={{ textDecoration: 'none', color: 'black' }}
-    //   key={index}
-    // >
-    //   <Show item={item} key={index} />
-    // </Link>
-    // ));
+
+    if (loading) return <h1>Loading</h1>;
+    if (error) return <h1>ERROR</h1>;
+
     return (
       <>
         <div className='margin-top pb-5 container-fluid'>

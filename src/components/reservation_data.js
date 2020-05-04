@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actConsult from '../_actions/consult';
-import Moment from 'react-moment';
-import Reply from './reservation_reply';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Moment from "react-moment";
+import Reply from "./reservation_reply";
 
 class reservation_data extends Component {
   render() {
@@ -20,7 +19,7 @@ class reservation_data extends Component {
                   height: 60,
                   width: 60,
                   borderRadius: 45,
-                  border: '3px solid #ff6185',
+                  border: "3px solid #ff6185",
                 }}
               />
             </div>
@@ -43,7 +42,7 @@ class reservation_data extends Component {
           </div>
           <div className='border-top'>
             <div className='text-center mt-3'>
-              <Reply item={data.id || ''} />
+              <Reply item={data.id || ""} />
             </div>
           </div>
         </div>

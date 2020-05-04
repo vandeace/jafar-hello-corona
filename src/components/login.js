@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actUser from '../_actions/user';
-import Header from './header';
-import HeaderDoctor from './header_doctor';
-import HeaderUser from './header_user';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actUser from "../_actions/user";
+import Header from "./header";
+import HeaderDoctor from "./header_doctor";
+import HeaderUser from "./header_user";
 
 class Login extends Component {
   constructor(props) {
@@ -16,9 +15,9 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    const data = JSON.parse(localStorage.getItem('credentials'));
+    const data = JSON.parse(localStorage.getItem("credentials"));
 
-    const user = localStorage.getItem('auth');
+    const user = localStorage.getItem("auth");
     console.log(this.state.data);
     if (user) {
       this.setState({ isLogin: true });
@@ -32,7 +31,7 @@ class Login extends Component {
   render() {
     const role = this.props.users.data.status;
     if (this.state.isLogin) {
-      if (role === 'doctor') {
+      if (role === "doctor") {
         return <HeaderDoctor />;
       }
       return <HeaderUser />;

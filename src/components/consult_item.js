@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import '../style/transaction_item.css';
-import axios from 'axios';
-import Moment from 'react-moment';
-import { Container, Row, Col, Modal, Button, Form } from 'react-bootstrap';
+import React, { Component } from "react";
+import "../style/transaction_item.css";
+import axios from "axios";
+import Moment from "react-moment";
+import { Row, Col, Modal, Button } from "react-bootstrap";
 
 export default class consult_item extends Component {
   state = {
     modal: false,
-    reply: '',
+    reply: "",
   };
 
   showModal = () => {
@@ -24,13 +24,13 @@ export default class consult_item extends Component {
 
   handleReply = async () => {
     try {
-      const data = JSON.parse(localStorage.getItem('credentials'));
+      const data = JSON.parse(localStorage.getItem("credentials"));
       const id = this.props.item.id;
       const user = await axios({
-        method: 'POST',
+        method: "POST",
         data: { reply: this.state.reply },
         headers: {
-          'content-type': 'application/json',
+          "content-type": "application/json",
           authorization: `Bearer ${data.token}`,
         },
         url: `http://localhost:5000/api/v1/consultation/${id}/reply`,
@@ -47,13 +47,13 @@ export default class consult_item extends Component {
 
   handleCancel = async () => {
     try {
-      const data = JSON.parse(localStorage.getItem('credentials'));
+      const data = JSON.parse(localStorage.getItem("credentials"));
       const id = this.props.item.id;
       const user = await axios({
-        method: 'PATCH',
-        data: { status: 'Cancel' },
+        method: "PATCH",
+        data: { status: "Cancel" },
         headers: {
-          'content-type': 'application/json',
+          "content-type": "application/json",
           authorization: `Bearer ${data.token}`,
         },
         url: `http://localhost:5000/api/v1/consultation/${id}`,
@@ -77,25 +77,25 @@ export default class consult_item extends Component {
             {data.id}
           </Col>
           <Col xs={2} className='transaction-item-text'>
-            <div style={{ textTransform: 'capitalize' }}>{data.fullName}</div>
+            <div style={{ textTransform: "capitalize" }}>{data.fullName}</div>
           </Col>
           <Col xs={2} className='transaction-item-text'>
-            <div style={{ textTransform: 'capitalize' }}>{data.subject}</div>
+            <div style={{ textTransform: "capitalize" }}>{data.subject}</div>
           </Col>
           <Col xs={2} className='transaction-item-text'>
             <Moment format='YYYY-MM-DD'>{data.createdAt}</Moment>
           </Col>
-          {data.status === 'Waiting Approve Consultation Live' && (
+          {data.status === "Waiting Approve Consultation Live" && (
             <Col xs={3} className='transaction-item-text color-orange'>
               {data.status}
             </Col>
           )}
-          {data.status === 'Waiting Live Consultation' && (
+          {data.status === "Waiting Live Consultation" && (
             <Col xs={3} className='transaction-item-text color-green'>
               {data.status}
             </Col>
           )}
-          {data.status === 'Cancel' && (
+          {data.status === "Cancel" && (
             <Col xs={3} className='transaction-item-text color-red'>
               {data.status}
             </Col>
@@ -111,118 +111,111 @@ export default class consult_item extends Component {
         <p className='transaction-item-line' />
 
         <Modal
-          size='xl'
+          size='lg'
           show={this.state.modal}
           onHide={this.closeModal}
-          aria-labelledby='example-modal-sizes-title-xl'
+          // aria-labelledby='example-modal-sizes-title-xl'
+          centered
+          aria-labelledby='contained-modal-title-vcenter'
         >
           <Modal.Header closeButton></Modal.Header>
-          <Modal.Body>
-            <Row style={{}}>
-              <Col xs={3}>
-                <h3 style={{ textTransform: 'capitalize' }}>{data.subject}</h3>
-                <p>{data.description}</p>
-              </Col>
-              <Col xs={5}></Col>
-              <Col xs={4}>
-                <h5 style={{ marginTop: '30px' }}>
-                  Date Complaint :{' '}
-                  <Moment format='DD,MMM YYYY'>{data.createdAt}</Moment>
-                </h5>
-                <br />
-                <h5 style={{ marginTop: '30px' }}>
-                  Live Consult :{data.liveConsult}
-                </h5>
-              </Col>
-            </Row>
+          <div className='pt-3 p-2 mb-3'>
+            <div className='px-3'>
+              <div className='d-flex justify-content-between align-items-top'>
+                <div className='pt-3'>
+                  <h4>{data.subject}</h4>
+                  <p>{data.description}</p>
+                </div>
+                <div>
+                  <div className='p-3 timeline-wrapper'>
+                    <ul className='StepProgress'>
+                      <li className='StepProgress-item is-done'>
+                        <div className='d-flex'>
+                          <div className='mr-4'>
+                            <div className='bold'>Date of Complaint</div>
+                            <div>
+                              <Moment format='DD,MMM YYYY'>
+                                {data.createdAt}
+                              </Moment>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li className='StepProgress-item is-done'>
+                        <div className='d-flex'>
+                          <div className='mr-4'>
+                            <div className='bold'>LIVE Consultation</div>
+                            <div>
+                              <Moment format='DD,MMM YYYY'>
+                                {data.liveConsult}
+                              </Moment>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-            <Row style={{ border: '1px solid black' }}>
-              <Col xs={1}>
-                <h4>No</h4>
-              </Col>
-              <Col xs={3}>
-                <h4>FullName</h4>
-              </Col>
-              <Col xs={2}>
-                <h4>Gender</h4>
-              </Col>
-              <Col xs={3}>
-                <h4>Phone</h4>
-              </Col>
-              <Col xs={1}>
-                <h4>Age</h4>
-              </Col>
-              <Col xs={1}>
-                <h4>Height</h4>
-              </Col>
-              <Col xs={1}>
-                <h4>Weight</h4>
-              </Col>
-            </Row>
-            <Row
-              style={{
-                border: '1px solid black',
-                borderTop: 'none',
-                paddingTop: '10px',
-              }}
-            >
-              <Col xs={1}>
-                <h4>{data.id}</h4>
-              </Col>
-              <Col xs={3}>
-                <h4>{data.fullName}</h4>
-              </Col>
-              <Col xs={2}>
-                <h4>{data.gender}</h4>
-              </Col>
-              <Col xs={3}>
-                <h4>{data.phone}</h4>
-              </Col>
-              <Col xs={1}>
-                <h4>{data.age}</h4>
-              </Col>
-              <Col xs={1}>
-                <h4>{data.height}</h4>
-              </Col>
-              <Col xs={1}>
-                <h4>{data.weight}</h4>
-              </Col>
-            </Row>
-            <Row
-              style={{
-                border: '1px solid',
-                paddingTop: '3px',
-                borderTop: 'none',
-              }}
-            >
-              {' '}
-              <Form.Control
-                as='textarea'
-                rows='3'
-                name='reply'
-                onChange={this.handleChangeTxt}
-                value={this.state.reply}
-              />
-            </Row>
-          </Modal.Body>
-          <Modal.Footer>
-            <Row>
-              <Col xs={4}>
+              <table className='table table-striped table-bordered table-sm'>
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>FullNAme</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>age</th>
+                    <th>height</th>
+                    <th>weight</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope='row'>1</th>
+                    <td>{data.fullName}</td>
+                    <td>{data.gender}</td>
+                    <td>{data.phone}</td>
+                    <td>{data.age}</td>
+                    <td>{data.height}</td>
+                    <td>{data.weight}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className='form-group'>
+                <label
+                  htmlFor='description'
+                  className='form-control-label bold'
+                >
+                  Give Response
+                </label>
+                <textarea
+                  required
+                  autoComplete='off'
+                  value={this.state.reply}
+                  onChange={this.handleChangeTxt}
+                  name='reply'
+                  className='textareas'
+                />
+              </div>
+              <div className='float-right d-flex'>
                 <Button
                   variant='danger'
+                  className='mr-2 btn-sm bold'
                   onClick={this.handleCancel}
-                  style={{ marginRight: 50 }}
                 >
-                  CANCEL
+                  Cancel
                 </Button>
-              </Col>
-              <Col xs={8}>
-                <Button variant='success' onClick={this.handleReply}>
-                  APPROVE
+                <Button
+                  variant='success'
+                  className='bold'
+                  onClick={this.handleReply}
+                >
+                  > Approve
                 </Button>
-              </Col>
-            </Row>
-          </Modal.Footer>
+              </div>
+            </div>
+          </div>
         </Modal>
       </div>
     );

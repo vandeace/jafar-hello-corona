@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actArticle from '../_actions/article';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actArticle from "../_actions/article";
+import { Redirect } from "react-router-dom";
 
 class add_article extends Component {
   state = {
@@ -18,7 +18,7 @@ class add_article extends Component {
   };
 
   handleSubmit = () => {
-    const datas = JSON.parse(localStorage.getItem('credentials'));
+    const datas = JSON.parse(localStorage.getItem("credentials"));
     const title = this.state.data.title;
     const description = this.state.data.description;
 
@@ -30,7 +30,7 @@ class add_article extends Component {
     this.props.dispatch(actArticle.postArticles(datas.token, data));
 
     this.setState({
-      data: '',
+      data: "",
       success: true,
     });
   };
@@ -38,6 +38,9 @@ class add_article extends Component {
   render() {
     const { data } = this.state;
     const { data: art, loading, error } = this.props;
+
+    if (loading) return <h1>Loading</h1>;
+    if (error) return <h1>ERROR</h1>;
 
     if (this.state.success) return <Redirect to='/' />;
     return (
@@ -50,7 +53,7 @@ class add_article extends Component {
                 required
                 autoComplete='off'
                 onChange={this.handleChangeTxt}
-                value={data.title || ''}
+                value={data.title || ""}
                 name='title'
                 className='title'
                 type='text'
@@ -62,9 +65,10 @@ class add_article extends Component {
                   required
                   autoComplete='off'
                   onChange={this.handleChangeTxt}
-                  value={data.description || ''}
+                  value={data.description || ""}
                   name='description'
                   className='forms'
+                  style={{ height: 400 }}
                   type='text'
                   rows='40'
                 />

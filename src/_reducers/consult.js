@@ -1,4 +1,4 @@
-import { GET_CONSULTS, POST_CONSULTS, GET_REPLY } from '../_store/action-types';
+import { GET_CONSULTS, POST_CONSULTS } from "../_store/action-types";
 
 const initialState = {
   data: [],
