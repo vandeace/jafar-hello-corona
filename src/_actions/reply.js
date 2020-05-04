@@ -10,8 +10,8 @@ export const getReply = (token) => {
         "content-type": "application/json",
         authorization: `Bearer ${token}`,
       },
-      url: `http://localhost:5000/api/v1//reply`,
-      // url: `https://hello-corona.herokuapp.com/api/v1/reply`,
+      // url: `http://localhost:5000/api/v1//reply`,
+      url: `https://hello-corona.herokuapp.com/api/v1/reply`,
     }),
   };
 };

@@ -33,7 +33,8 @@ export default class consult_item extends Component {
           "content-type": "application/json",
           authorization: `Bearer ${data.token}`,
         },
-        url: `http://localhost:5000/api/v1/consultation/${id}/reply`,
+        // url: `http://localhost:5000/api/v1/consultation/${id}/reply`,
+        url: `https://hello-corona.herokuapp.com/api/v1/consultation/${id}/reply`,
       });
       console.log(user);
       if (user) {
@@ -56,7 +57,8 @@ export default class consult_item extends Component {
           "content-type": "application/json",
           authorization: `Bearer ${data.token}`,
         },
-        url: `http://localhost:5000/api/v1/consultation/${id}`,
+        // url: `http://localhost:5000/api/v1/consultation/${id}`,
+        url: `https://hello-corona.herokuapp.com/api/v1/consultation/${id}`,
       });
       console.log(user);
       if (user) {

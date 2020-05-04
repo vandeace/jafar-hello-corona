@@ -10,8 +10,8 @@ export const getUsers = (token) => {
         "content-type": "application/json",
         authorization: `Bearer ${token}`,
       },
-      url: `http://localhost:5000/api/v1/user`,
-      // url: `https://hello-corona.herokuapp.com/api/v1/user`,
+      // url: `http://localhost:5000/api/v1/user`,
+      url: `https://hello-corona.herokuapp.com/api/v1/user`,
     }),
   };
 };

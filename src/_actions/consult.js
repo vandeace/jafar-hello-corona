@@ -10,8 +10,8 @@ export const getConsult = (token) => {
         "content-type": "application/json",
         authorization: `Bearer ${token}`,
       },
-      url: `http://localhost:5000/api/v1/index`,
-      // url: `https://hello-corona.herokuapp.com/api/v1/index`,
+      // url: `http://localhost:5000/api/v1/index`,
+      url: `https://hello-corona.herokuapp.com/api/v1/index`,
     }),
   };
 };
@@ -26,8 +26,8 @@ export const postConsult = (token, data) => {
         authorization: `Bearer ${token}`,
       },
       data: data,
-      url: `http://localhost:5000/api/v1/consultation`,
-      // url: `https://hello-corona.herokuapp.com/api/v1/consultation`,
+      // url: `http://localhost:5000/api/v1/consultation`,
+      url: `https://hello-corona.herokuapp.com/api/v1/consultation`,
     }),
   };
 };

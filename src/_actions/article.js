@@ -6,8 +6,8 @@ export const getArticles = () => {
     type: GET_ARTICLES,
     payload: axios({
       method: "GET",
-      url: `http://localhost:5000/api/v1/article`,
-      // url: `https://hello-corona.herokuapp.com/api/v1/article`,
+      // url: `http://localhost:5000/api/v1/article`,
+      url: `https://hello-corona.herokuapp.com/api/v1/article`,
     }),
   };
 };
@@ -22,8 +22,8 @@ export const postArticles = (token, data) => {
         authorization: `Bearer ${token}`,
       },
       data: data,
-      url: `http://localhost:5000/api/v1/article`,
-      // url: `https://hello-corona.herokuapp.com/api/v1/article`,
+      // url: `http://localhost:5000/api/v1/article`,
+      url: `https://hello-corona.herokuapp.com/api/v1/article`,
     }),
   };
 };
