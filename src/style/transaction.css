@@ -1,0 +1,35 @@
+.transaction-bg {
+  background: #f9f9f9;
+  min-height: 740px;
+}
+
+.transaction-area {
+  position: relative;
+  left: 0px;
+}
+
+.transaction-title {
+  font-family: Montserrat;
+  font-size: 36px;
+
+  position: relative;
+  left: 150px;
+  top: 59px;
+
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+
+.transaction-text {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+
+  position: relative;
+  top: 25px;
+
+  color: #000000;
+}
